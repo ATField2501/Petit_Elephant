@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 # coding: utf8
 
 """- Client pour Mastodon - auteur:cagliostro <atfield2501@gmail.com> -"""
@@ -246,6 +247,7 @@ if __name__ == "__main__":
             tlaloc.Abbonnements()
         if action == 'abb-':
             tlaloc.Abbonnes()
-
+        else:
+            print('oops.. je ne reconnais pas cette commande')
 
 
