@@ -36,8 +36,9 @@ def prompt_aide():
     print('             status  : Affiche le status du compte')
     print('             abb+    : Affiche la liste des abbonnements')
     print('             abb-    : Affiche la liste des abbonné.es')
-
-
+    print('             flux1   : Affiche le flux acceuil')
+    print('             flux2   : Affiche le flux de l instance')
+    print('             flux3   : Affiche le flux global')
 
 class Petit_Elephant():
     """ Classe Principale """
@@ -97,8 +98,7 @@ class Petit_Elephant():
             print(i+1,e)
 
     def Abbonnes(self):
-        """ Renvois le nombre et le nom des abonné.es de l'utilisateur.trice """
-        
+        """ Renvois le nombre et le nom des abonné.es de l'utilisateur.trice """ 
         flux = Petit_Elephant.mastodon.account_followers(Petit_Elephant.Me_ID)
         for i,e in enumerate(flux):
             print(i+1,e['display_name'])
@@ -247,6 +247,12 @@ if __name__ == "__main__":
             tlaloc.Abbonnements()
         if action == 'abb-':
             tlaloc.Abbonnes()
+        if action == 'flux1':
+            tlaloc.flux_acceuil()
+        if action == 'flux2':
+            tlaloc.flux_local()
+        if action == 'flux3': 
+            tlaloc.flux_public()
         else:
             print('oops.. je ne reconnais pas cette commande')
 
