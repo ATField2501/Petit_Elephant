@@ -39,6 +39,7 @@ def prompt_aide():
     print('             flux1   : Affiche le flux acceuil')
     print('             flux2   : Affiche le flux de l instance')
     print('             flux3   : Affiche le flux global')
+    print('             search  : Effectue une recherche par mot clée')
 
 class Petit_Elephant():
     """ Classe Principale """
@@ -113,9 +114,15 @@ class Petit_Elephant():
     def Recherche(self,*args):
         """ Recherche dans mastodon """
         flux = Petit_Elephant.mastodon.search(args[0])
-        print('compte   : '+str(flux['accounts']))
-        print('hashtags : '+str(flux['hashtags']))
-        print('statues : '+str(flux['statuses']))
+        a = flux['accounts']
+        print(' *  Compte.s  *')
+        print('compte   : '+str(a[0]))
+        b = flux['hashtags']
+        print(' *  HashTag  *')
+        print('hashtags : '+str(b[0]))
+        c = flux['statuses']
+        print(' *  Statues * ')
+        print('statues : '+str(c[0]))
 
     def Favoris(self):
         """ """
@@ -253,6 +260,10 @@ if __name__ == "__main__":
             tlaloc.flux_local()
         if action == 'flux3': 
             tlaloc.flux_public()
+        if action == 'search':
+            uni = input('Entrez votre indice de recherche : ')
+            tlaloc.Recherche(uni)
+ 
         else:
             print('oops.. je ne reconnais pas cette commande')
 
