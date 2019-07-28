@@ -31,7 +31,7 @@ def prompt_aide():
     print('    * client mastodon *') 
     print('usage      : petit_elephant [commande]') 
     print('Commandes  :')
-    print('               -h    : Prompt aide')
+    print('             help    : Prompt aide')
     print('             toot    : Envois un simple toot sur le réseau')
     print('             status  : Affiche le status du compte')
     print('             abb+    : Affiche la liste des abbonnements')
@@ -40,6 +40,7 @@ def prompt_aide():
     print('             flux2   : Affiche le flux de l instance')
     print('             flux3   : Affiche le flux global')
     print('             search  : Effectue une recherche par mot clée')
+    print('             favoris : Affiche la liste des bookmarks')
 
 class Petit_Elephant():
     """ Classe Principale """
@@ -243,7 +244,7 @@ if __name__ == "__main__":
 
     #print(sys.argv[1])
     if aleph == True:
-        if action == '-h':
+        if action == 'help':
             prompt_aide()
         if action == 'toot':
             sujet = input("Toot : \n")
@@ -263,6 +264,8 @@ if __name__ == "__main__":
         if action == 'search':
             uni = input('Entrez votre indice de recherche : ')
             tlaloc.Recherche(uni)
+        if action == 'favoris': 
+            tlaloc.Favoris()
  
         else:
             print('oops.. je ne reconnais pas cette commande')
