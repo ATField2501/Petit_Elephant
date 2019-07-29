@@ -15,7 +15,7 @@ auteur: cagliostro <atfield2501@gmail.com>
 pip3 install mastodon
 git clone https://github.com/ATField2501/Petit_Elephant.git
 cd Petit_Elephant
-sudo chmod +x Petit_Elephant.py
+sudo chmod +x petit_elephant.py
 
 ```
 ---
@@ -23,7 +23,7 @@ sudo chmod +x Petit_Elephant.py
 ### Utilisation
 
 ``` shell
-./Petit_Elephant
+./petit_elephant
 
 < Petit Elephant     
   client mastodon >  
