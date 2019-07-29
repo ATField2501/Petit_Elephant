@@ -18,6 +18,7 @@ cd Petit_Elephant
 sudo chmod +x Petit_Elephant.py
 
 ```
+---
 
 ### Utilisation
 
