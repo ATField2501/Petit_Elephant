@@ -4,22 +4,23 @@ Client en ligne de commandes pour le réseau mastodon
 auteur: cagliostro <atfield2501@gmail.com>
 
 ### Dépendances
----
+
 * python3
 * mastondon.py
 ---
 
 ### Instalation
----
-````shell
+
+```shell
 pip3 install mastodon
 git clone https://github.com/ATField2501/Petit_Elephant.git
 cd Petit_Elephant
 sudo chmod +x Petit_Elephant.py
+
 ```
 
 ### Utilisation
----
+
 ``` shell
 ./Petit_Elephant
 
@@ -56,5 +57,6 @@ Commandes  :
              info_all : Affiche info sur instance
              notif    : Affiche les notifications
              direct   : Affiche les conversations privées
+
 ```
 ---
