@@ -9,23 +9,45 @@ import time
 import random
 import sys
 
-
-print('< Petit Elephant     ')
-print('  client mastodon >  ')
-print(' --------------------')
-print('  \     /\  ___  /\  ')
-print('   \   // \/   \/  \ ')
-print('      ((    O O    ))')
-print('       \  /     \ // ')
-print('        \/  | |  \/  ')
-print('         |  | |  |   ')
-print('         |  | |  |   ')
-print('         |   o   |   ')
-print('         | |   | |   ')
-print('         |m|   |m|   ')
-
-
+post = " OK "
 aleph = False
+
+def prompt1():
+    """ *** """    
+    print("\n< Petit Elephant   ")
+    print('  client mastodon >  ')
+    print(' --------------------')
+    print('  \     /\  ___  /\  ')
+    print('   \   // \/   \/  \ ')
+    print('      ((    O O    ))')
+    print('       \  /     \ // ')
+    print('        \/  | |  \/  ')
+    print('         |  | |  |   ')
+    print('         |  | |  |   ')
+    print('         |   o   |   ')
+    print('         | |   | |   ')
+    print('         |m|   |m|   ')
+
+#prompt1()
+
+def prompt2(*args):
+    """ *** """    
+    print("\n <"+ str(args[0])+'')
+    print(''+  str(args[1]) +'  ')
+    print(' --------------------')
+    print('          /\_    /o  ')
+    print('         /    _ / /  ')
+    print('        /    O / /   ')
+    print('        \  /    /    ')
+    print('         \/ \__ \    ')
+    print('         |       |   ')
+    print('         |       |   ')
+    print('         |  _-_  |   ')
+    print('         | |   | |   ')
+    print('         |m|   |m|   ')
+
+
+
 
 def prompt_aide():
     """ Affiche un prompt d'aide """
@@ -56,29 +78,37 @@ class Petit_Elephant():
     mastodon = Mastodon(access_token = 'pytooter_usercred.secret',
                          api_base_url = 'https://mastodon.social')
     
- #   mastodon.log_in(babar , babar_mdp,
- #                     to_file = 'pytooter_usercred.secret')
+    mastodon.log_in(babar , babar_mdp,
+                      to_file = 'pytooter_usercred.secret')
 
     Me_ID = mastodon._Mastodon__get_logged_in_id()
     
     def Cron(self):
-        """ Enclenche la repetition des toots de media """
+        """ Enclenche la repetition des retoots de media 
+            Compte les retoots effectués """
+        nb = 0
         while 1:
             flux = Petit_Elephant.mastodon.account_statuses(Petit_Elephant.Me_ID, only_media=True)
             media_list = []
             for i,e in enumerate(flux):
                 media_list.append(e['id'])
             cible = random.choice(media_list)
-            print(media_list)
-            Petit_Elephant.mastodon.status_reblog(cible)
-            print('Toot!!!')
-            time.sleep(900) 
+#            print(media_list)
+            try:
+                Petit_Elephant.mastodon.status_reblog(cible)
+                nb += 1
+                print('Toot!!!   - '+str(nb))
+           
+            except Exception as e:
+                print(str(e))
+            aleatoir = [900,960,930,888,766,950]    
+            time.sleep(random.choice(aleatoir)) 
        
        
     
     
     def Ecriture(self,*args):
-        """ classe pour l'ecriture simple de toots sur MAstodon """
+        """ classe pour l'ecriture simple de toots sur Mastodon """
         toot = args[0]
         Petit_Elephant.mastodon.toot(toot)
 
@@ -310,8 +340,11 @@ if __name__ == "__main__":
     tlaloc = Petit_Elephant()
     # Lecture des arguments
     if len(sys.argv) < 2:
-        print("\n - Veuillez spécifier un argument - \n")
-        prompt_aide()
+        prompt1()
+        time.sleep(0.7)
+        sujet1 = "\n - Veuillez spécifier un argument -"
+        sujet2 = "  help pour l'aide >"
+        prompt2(sujet1 , sujet2)
     if len(sys.argv) > 1:
         action = sys.argv[1]
         aleph = True
@@ -322,18 +355,35 @@ if __name__ == "__main__":
     #print(sys.argv[1])
     if aleph == True:
         if action == 'help':
+            prompt1()
+            time.sleep(0.7)
             prompt_aide()
+            prompt2('help barrissement',post)
         if action == 'toot':
             sujet = input("Toot : \n")
             tlaloc.Ecriture(sujet)
+            prompt2(sujet,post)
+            prompt1()
         if action == 'status':
+            prompt1()
+            time.sleep(0.7)
             tlaloc.Status()
+            prompt2('status barrissement', post)
         if action == 'abb+':
+            prompt1()
+            time.sleep(0.7)
             tlaloc.Abbonnements()
+            prompt2('abbonnement.s barrissement', post)
         if action == 'abb-':
+            prompt1()
+            time.sleep(0.7)
             tlaloc.Abbonnes()
+            prompt2('abbonné.e.s', post)
         if action == 'flux1':
+            prompt1()
+            time.sleep(0.7)
             tlaloc.flux_acceuil()
+            prompt2('acceuil', post)
         if action == 'flux2':
             tlaloc.flux_local()
         if action == 'flux3': 
